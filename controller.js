@@ -50,9 +50,9 @@ return{
 
 		    // queryAllCars - requires no arguments , ex: args: [''],
 		    const request = {
-		        chaincodeId: 'carcontract',
+		        chaincodeId: 'car-app',
 		        txId: tx_id,
-		        fcn: 'queryAllCars',
+		        fcn: 'queryAllCarros',
 		        args: ['']
 		    };
 
@@ -82,10 +82,10 @@ return{
 		console.log(array);
 
 		var key = array[0]
-		var timestamp = array[2]
-		var location = array[1]
-		var vessel = array[4]
-		var holder = array[3]
+		var fabricante = array[2]
+		var modelo = array[1]
+		var color = array[4]
+		var propietario = array[3]
 
 
 		var fabric_client = new Fabric_Client();
@@ -132,9 +132,9 @@ return{
 		    // send proposal to endorser
 		    const request = {
 		        //targets : --- letting this default to the peers assigned to the channel
-		        chaincodeId: 'carcontract',
-		        fcn: 'createCar',
-		        args: [key, vessel, location, timestamp, holder],
+		        chaincodeId: 'car-app',
+		        fcn: 'crearCarro',
+		        args: [fabricante, modelo, color, propietario],
 		        chainId: 'bca',
 		        txId: tx_id
 		    };
@@ -274,9 +274,9 @@ return{
 
 		    // queryCar - requires 1 argument, ex: args: ['4'],
 		    const request = {
-		        chaincodeId: 'carcontract',
+		        chaincodeId: 'car-app',
 		        txId: tx_id,
-		        fcn: 'queryCar',
+		        fcn: 'queryCarro',
 		        args: [key]
 		    };
 
@@ -353,10 +353,10 @@ return{
 		    // send proposal to endorser
 		    var request = {
 		        //targets : --- letting this default to the peers assigned to the channel
-		        chaincodeId: 'carcontract',
-		        fcn: 'changeCarOwner',
+		        chaincodeId: 'car-app',
+		        fcn: 'cambiarPropietario',
 		        args: [key, owner],
-		        chainId: 'mychannel',
+		        chainId: 'bca',
 		        txId: tx_id
 		    };
 
