@@ -134,7 +134,7 @@ return{
 		        //targets : --- letting this default to the peers assigned to the channel
 		        chaincodeId: 'car-app',
 		        fcn: 'crearCarro',
-		        args: [fabricante, modelo, color, propietario],
+		        args: [key, fabricante, modelo, color, propietario],
 		        chainId: 'bca',
 		        txId: tx_id
 		    };
