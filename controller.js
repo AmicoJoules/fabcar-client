@@ -65,8 +65,11 @@ return{
 		        if (query_responses[0] instanceof Error) {
 		            console.error("error from query = ", query_responses[0]);
 		        } else {
-		            console.log("Response is ", query_responses[0].toString());
-		            res.json(JSON.parse(query_responses[0].toString()));
+					console.log("Response is ", query_responses[0].toString());
+					let cars = JSON.parse(query_responses[0].toString());
+		            res.json(cars.map((car) => {
+						return { id: car.Key, marca: car.Record.fabricante, modelo: car.Record.modelo, color: car.Record.color, propietario: car.Record.propietario };
+					}));
 		        }
 		    } else {
 		        console.log("No payloads were returned from query");

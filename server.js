@@ -26,6 +26,10 @@ app.get('/', function(req, res) {
     res.json({message: 'App is running!', status: 200});
 });
 
+app.get('/test', function(req, res) {
+    res.sendFile(__dirname +  '/views/index.html')
+});
+
 app.get('/get_car/:id', function(req, res){
     car.get_car(req, res);
 });
